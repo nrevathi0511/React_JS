@@ -1,0 +1,1342 @@
+*Framework Design Guidelines:
+
+   1. Naming Guidelines:
+
+
+  **1.1-  Code that satisfies all DO's in Capitalization Conventions:
+
+            using System;
+
+               namespace SampleNamespace
+                {
+                  public class SampleClass
+                  {
+           // PascalCasing for class name
+
+                     public string MyProperty { get; set; }
+
+           // PascalCasing for method name
+
+                     public void MyMethod()
+                      {
+
+           // camelCasing for parameter names
+                         int myVariable = 42;
+                         Console.WriteLine(myVariable);
+                       }
+
+           // PascalCasing for event name
+       
+                       public event EventHandler MyEvent;
+
+           // PascalCasing for enum type and enum values
+
+                       public enum DaysOfWeek
+                         {
+                           Sunday,
+                           Monday,
+                           Tuesday,
+                           Wednesday,
+                           Thursday,
+                           Friday,
+                           Saturday
+                         } 
+                     }
+                  }
+
+In the above sample code:
+                          #  'SampleNamespace' follows PascalCasing for the namespace name.
+                          #  'SampleClass' follows PascalCasing for the class name.
+                          #  'MyProperty' follows PascalCasing for the property name.
+                          #  'MyMethod' follows PascalCasing for the method name, and myVariable follows camelCasing for the parameter name.
+                          #  'MyEvent' follows PascalCasing for the event name.
+                          #  'DaysOfWeek' follows PascalCasing for the enum type name, and enum values like 'Sunday', 'Monday', etc., also follow PascalCasing.
+_____________________________________________________________________________________________________________________________________________________________________
+
+
+  **1.2-  Code that satisfies all DO's in General Naming Conventions:
+          
+
+            using System;
+
+            namespace SampleNamingConventions
+            {
+        // Class names should be in PascalCase
+            public class CustomerService
+            {
+        // Private fields should start with an underscore and use camelCase
+            private int _customerId;
+            private string _customerName;
+
+        // Properties should use PascalCase
+            public int CustomerId
+            {
+               get { return _customerId; }
+               set { _customerId = value; }
+            }
+
+        // Methods should use PascalCase
+             public void SetCustomerName(string customerName)
+             {
+        // Local variables should use camelCase
+               _customerName = customerName;
+             }
+
+             public string GetCustomerName()
+             {
+               return _customerName;
+             }
+
+        // Constants should be in uppercase with underscores
+              public const int MaxAllowedOrders = 10;
+
+        // Enums should use PascalCase
+              public enum OrderStatus
+              {
+                 Pending,
+                 Processing,
+                 Completed
+              }
+           }
+
+         class Program
+         {
+           static void Main(string[] args)
+            {
+               CustomerService customerService = new CustomerService();  		//Object creation
+               customerService.CustomerId = 1;
+               customerService.SetCustomerName("John Doe");
+
+               Console.WriteLine($"Customer ID: {customerService.CustomerId}");
+               Console.WriteLine($"Customer Name: {customerService.GetCustomerName()}");
+
+           // Using constants and enums
+               Console.WriteLine($"Max Allowed Orders: {CustomerService.MaxAllowedOrders}");
+               Console.WriteLine($"Order Status: {CustomerService.OrderStatus.Pending}");
+           }
+        }
+    }  
+
+
+  In the above code:
+
+                      #  Class names ('CustomerService', 'OrderStatus') are in PascalCase.
+                      #  Private fields ('_customerId',' _customerName') use camelCase and start with an underscore.
+                      #  Properties ('CustomerId') use PascalCase.
+                      #  Method names ('SetCustomerName', 'GetCustomerName') use PascalCase.
+                      #  Constants ('MaxAllowedOrders') are in uppercase with underscores.
+                      #  Enums ('OrderStatus') use PascalCase.
+                      #  Local variables within methods use camelCase.
+                      #  The 'Main' method follows the same conventions, and it demonstrates the usage of the 'CustomerService' class.
+__________________________________________________________________________________________________________________________________________________________________
+
+ 
+  **1.3-   Code that satisfies all DO's in Names of Assemblies and DLLs:
+
+           using System;
+
+           namespace MyCompany.DataProcessing
+            {
+
+         // This class represents a large chunk of functionality related to data processing
+
+              public class DataProcessor
+                {
+                  public void ProcessData()
+                 {
+         // Implementation of data processing logic
+                   Console.WriteLine("Processing data...");
+                 }
+               }
+            }
+
+          namespace MyCompany.Reporting
+           {
+
+         // This class represents a large chunk of functionality related to reporting
+             public class ReportGenerator
+              {
+                public void GenerateReport()
+                 {
+        // Implementation of report generation logic
+                   Console.WriteLine("Generating report...");
+                 }
+              }
+           }
+
+         namespace MyCompany.UI
+          {
+       // This class represents a large chunk of functionality related to the user interface
+             public class UserInterface
+              {
+                public void ShowUI()
+                {
+        // Implementation of UI logic
+                  Console.WriteLine("Showing user interface...");
+                }
+              }
+           }
+
+         namespace MyCompany
+          {
+            class Program
+             {
+             static void Main(string[] args)
+               {
+         // Example usage of the named assemblies
+                 var dataProcessor = new DataProcessing.DataProcessor();
+                 dataProcessor.ProcessData();
+  
+                 var reportGenerator = new Reporting.ReportGenerator();
+                 reportGenerator.GenerateReport();
+
+                 var userInterface = new UI.UserInterface();
+                 userInterface.ShowUI();
+               }
+            } 
+         }
+            
+   In the above code-
+ 
+                       #  We have three separate namespaces: "MyComapany.DataProcessing", "My Company.Reporting", and
+                          "MyCompany.UI". Each of these namespaces represents a large chunk of functionality. 
+                       #  Within each namespace, we have classes that encapsulate functionality related to data processing,
+                          reporting, and user interface, respectively. 
+                       #  The names of the namespaces and classes are chosen to clearly indicate the purpose of each assembly
+                          or DLL. For example, "MyCompany.DataProcessing" suggests that this assembly contains functionality 
+                          related to data processing.
+                       #  In the 'Main' method, we demonstrate how you can use these named assemblies and their classes in your application.
+
+_________________________________________________________________________________________________________________________________________________________________
+
+  **1.4-  Names of Namespaces-
+
+          namespace YourCompany.ProductName.SubComponent
+           {
+         // Your code for this namespace goes here
+           }
+
+          namespace AcmeCorp.Widgets.WidgetLibrary
+           {
+        // Your code for this namespace goes here
+           }
+
+          namespace MyCompany.Messaging
+           { 
+        // Your code for this namespace goes here
+           }
+
+In the above code:
+
+                     #  Namespaces are prefixed with the company name to prevent naming conflicts with namespaces from different companies.
+                     #  A stable,version-independentproduct name is used at the second level of the namespace. 
+                     #  PascalCasing is used for naming components within the namespaces( Eg: SubComponent, "WidgetLibrary").
+                     #  Namespace componets are seperated with periods, as recommended( Eg: "YourCompany.ProductName,"
+                        "AcmeCorp.Widgets," "MyCompany.Messaging").
+
+_________________________________________________________________________________________________________________________________________________________________
+
+  **1.5-  Names of Classes, Structs, and Interfaces-
+
+               
+                      using System;
+
+                 // Do name classes and structs with nouns or noun phrases, using PascalCasing
+                      public class Employee
+                      {
+                // Class members and methods here
+                      }
+
+                      public struct Point3D
+                      {
+                // Struct members and methods here
+                      }
+
+                // Do name interfaces with adjective phrases, or occasionally with nouns or noun phrases
+                      public interface IResizable
+                      {
+                        void Resize(int width, int height);
+                      }
+ 
+                      public interface ILogger
+                      {
+                        void Log(string message);
+                      }
+
+                // Do prefix interface names with the letter I
+                      public interface IComponent
+                      {
+                        void Initialize();
+                      }
+
+                      public interface ICustomAttributeProvider
+                      {
+                        string GetCustomAttribute(string attributeName);
+                      }
+ 
+                      public interface IPersistable
+                      {
+                        void Save();
+                      }
+
+                 // Do ensure that the names differ only by the "I" prefix on the interface name
+                      public class FileManager : IPersistable
+                      {
+                        public void Save()
+                        {
+                  // Implementation here
+                        }
+                      }
+
+                     public class Customer : ICustomAttributeProvider
+                     {
+                       public string GetCustomAttribute(string attributeName)
+                        {
+                   // Implementation here
+                           return "";
+                        }
+                      }
+
+                       public class MainProgram
+                       {
+                         public static void Main()
+                         {
+                           Employee employee = new Employee();
+                           Point3D point = new Point3D();
+ 
+                           IResizable resizableObject = new Widget();
+                           ILogger logger = new ConsoleLogger();
+ 
+                           IComponent component = new MyComponent();
+                           ICustomAttributeProvider customAttributeProvider = new MyAttributeProvider();
+                           IPersistable persistable = new FileManager();
+                         }
+                       }
+
+    In the above code:  
+
+                       
+                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   **1.5.1-   Names of Generic Type Parameters-
+
+
+               using System;
+               using System.Reflection;
+
+                public class Program
+                {
+                  public static void Main()
+                  {
+            // Create an instance of a generic class
+                    var myGenericClass = new MyGenericClass<int, string>();
+
+           // Get the type of the generic class
+                    Type genericType = myGenericClass.GetType();
+
+           // Check if it's a generic type
+                    if (genericType.IsGenericType)
+                    {
+           // Get the generic type definition (i.e., MyGenericClass<,>)
+                      Type genericTypeDefinition = genericType.GetGenericTypeDefinition();
+
+           // Get the type parameters of the generic type
+                      Type[] typeParameters = genericType.GetGenericArguments();
+
+                      Console.WriteLine("Generic Type Name: " + genericTypeDefinition.Name);
+                      Console.WriteLine("Type Parameters:");
+                      foreach (Type typeParam in typeParameters)
+                      {
+                        Console.WriteLine(typeParam.Name);
+                      }
+                    }
+                  }
+                }
+
+                      public class MyGenericClass<T1, T2>
+                      {
+         // Some generic members go here
+                      }
+
+
+In the above code:
+
+                      #  We create a generic class "MyGenericClass" with two type parameters 'T1' and 'T2'.
+                      #  In the 'Main' method, we create an instance of 'MyGenericClass<int, string>'.
+                      #  We use reflection to get the type of the generic class and check if it's a generic type.
+                      #  If it's a generic type, we get the generic type definition (which includes the type parameters) and the type parameters themselves. 
+                      #  Finally, we print out the generic type name and the names of the type parameters.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    **1.5.2-  Names of Common Types-
+
+                using System;
+
+           // Custom attribute class with "Attribute" suffix
+                 public class CustomAttributeAttribute : Attribute
+                 {
+           // Add custom attribute properties and methods here
+                 }
+
+           // Delegate with "EventHandler" suffix for events
+                  public delegate void ClickEventHandler(object sender, EventArgs e);
+
+           // Delegate with "Callback" suffix for non-event delegates
+                  public delegate void OperationCallback();
+
+           // EventArgs with "EventArgs" suffix
+                  public class CustomEventArgs : EventArgs
+                  {
+           // Add custom event arguments properties and methods here
+                  }
+
+           // Exception with "Exception" suffix
+                  public class CustomException : Exception
+                  {
+           // Add custom exception properties and methods here
+                  }
+
+          // IDictionary with "Dictionary" suffix
+                 public class CustomDictionary<TKey, TValue> : IDictionary<TKey, TValue>
+                 {
+          // Implement IDictionary<TKey, TValue> methods here
+                 }
+
+          // IEnumerable with "Collection" suffix
+                 public class CustomEnumerableCollection<T> : IEnumerable<T>
+                 {
+          // Implement IEnumerable<T> methods here
+                 }
+
+          // ICollection with "Collection" suffix
+                 public class CustomCollection<T> : ICollection<T>
+                 {
+          // Implement ICollection<T> methods here
+                 }
+
+          // IList with "Collection" suffix
+                public class CustomListCollection<T> : IList<T>
+                {
+          // Implement IList<T> methods here
+                }
+
+          // Stream with "Stream" suffix
+                public class CustomStream : System.IO.Stream
+                {
+         // Implement Stream methods here
+                }
+ 
+         // CodeAccessPermission with "Permission" suffix
+                 public class CustomCodeAccessPermission : CodeAccessPermission
+                 {
+         // Implement CodeAccessPermission methods here
+                 }
+
+         // IPermission with "Permission" suffix
+                 public interface ICustomPermission : IPermission
+                 {
+         // Declare IPermission methods here
+                 }
+
+  In the above code:
+
+                       This code provides examples of types that follow the naming guidelines specified for each of the mentioned .NET Framework types.
+                       You can customize these types and add your own properties and methods as needed.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  **1.5.3-  Naming Enumerations-
+
+            // Singular type name for a regular enumeration
+                 public enum Color
+                 {
+                     Red,
+                     Green,
+                     Blue
+                 }
+
+           // Plural type name for an enumeration with bit fields (flags enum)
+                [Flags]
+                public enum Permissions
+                {
+                   None = 0,
+                   Read = 1,
+                   Write = 2,
+                   Execute = 4
+                }
+
+    In the above code: 
+
+                       #  This example, we have two enumerations. The first one, Color, uses a singular type name because it represents a regular
+                          enumeration with individual values for colors.
+                       #  The second one, Permissions, uses a plural type name because it is a flags enumeration, also known as a bit field enumeration.
+                          Flags enumerations are typically used to represent combinations of values using bitwise operations, so they often have multiple 
+                          values combined, and using a plural type name like Permissions helps convey this purpose. The [Flags] attribute is applied to 
+                          indicate that it's a flags enumeration.                
+               
+ _______________________________________________________________________________________________________________________________________________________________
+
+
+   ** 1.6-   Names of Type Members-
+
+     **1.6.1 Names of Methods-
+
+                 public class ShoppingCart {
+                 private List<Item> items = new ArrayList<>();
+
+           // Add an item to the shopping cart
+                 public void addItem(Item item) {
+                 items.add(item);
+                }
+
+          // Remove an item from the shopping cart
+                 public void removeItem(Item item) {
+                 items.remove(item);
+                }
+
+          // Calculate the total price of all items in the shopping cart
+                 public double calculateTotalPrice() {
+                 double totalPrice = 0.0;
+                 for (Item item : items) {
+                 totalPrice += item.getPrice();
+                }
+                 return totalPrice;
+              }
+            }
+
+                public class Item {
+                private String name;
+                private double price;
+
+                public Item(String name, double price) {
+                this.name = name;
+                this.price = price;
+            }
+
+               public String getName() {
+                return name;
+              }
+
+               public double getPrice() {
+                 return price;
+              }
+            }
+
+   In the above code-
+                       #  In this example, the methods in the ShoppingCart class have names that are verb phrases, making it clear what each method does:
+                       #  'addItem(Item item)' - Adds an item to the shopping cart.
+                       #  'removeItem(Item item)' - Removes an item from the shopping cart.
+                       #  'calculateTotalPrice()' - Calculates the total price of all items in the shopping cart.
+                       #  Using descriptive method names makes your code more readable and helps other developers understand the purpose of each method 
+                          without needing to dive into the implementation details.
+                                
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  **1.6.2-  Names of Properties-
+
+     
+                   public class VideoPlayer
+                   {
+             // DO name properties using a noun, noun phrase, or adjective
+                     public string VideoTitle { get; set; }
+                     public int PlaybackSpeed { get; set; }
+    
+            // DO name collection properties with a plural phrase describing the items in the collection
+                    public List<Subtitle> Subtitles { get; set; }
+                    public List<AudioTrack> AudioTracks { get; set; }
+    
+            // DO name Boolean properties with an affirmative phrase
+                    public bool CanSeek { get; set; }
+                    public bool IsFullScreen { get; set; }
+    
+           // Optionally, you can prefix Boolean properties with "Is," "Can," or "Has" where it adds value
+                    public bool IsMuted { get; set; }
+                    public bool CanPause { get; set; }
+                  }
+
+                  public class Subtitle
+                  {
+                    public string Language { get; set; }
+                    public string Text { get; set; }
+                  }
+
+                  public class AudioTrack
+                  {
+                    public string Language { get; set; }
+                    public string Name { get; set; }
+                  }
+
+   
+    In the above code:                   
+
+                        #  Properties are named using nouns or noun phrases (e.g., 'VideoTitle', 'PlaybackSpeed').
+                        #  Collection properties are named with plural phrases describing the items in the collection (e.g., 'Subtitles', 'AudioTracks') 
+                           instead of using singular phrases followed by "List" or "Collection".
+                        #  Boolean properties are named with affirmative phrases (e.g., CanSeek, IsFullScreen).Optionally, some properties are prefixed 
+                           with "Is" or "Can" where it adds value (e.g., IsMuted, CanPause). 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+   **1.6.3-  Names of Events- 
+
+
+                     using System;
+
+                     public class ClickedEventArgs : EventArgs
+                     {
+                // Add any properties or fields needed for event data
+                       public string ButtonText { get; set; }
+
+                       public ClickedEventArgs(string buttonText)
+                       {
+                         ButtonText = buttonText;
+                       }
+                      }
+
+                      public class Button
+                      {
+               // Define an event with a verb phrase and using the "EventHandler" suffix
+                      public event EventHandler<ClickedEventArgs> ButtonClickedEventHandler;
+
+               // Method to raise the event
+                     protected virtual void OnButtonClicked(string buttonText)
+                     {
+              // Create an instance of ClickedEventArgs to pass event data
+                       var args = new ClickedEventArgs(buttonText);
+
+              // Check if there are any subscribers to the event
+                       ButtonClickedEventHandler?.Invoke(this, args);
+                     }
+
+              // Method to simulate a button click
+                     public void Click(string buttonText)
+                     {
+                       Console.WriteLine($"Button clicked with text: {buttonText}");
+
+             // Raise the event when the button is clicked
+                       OnButtonClicked(buttonText);
+                     }
+                   }
+
+                   public class Program
+                   {
+                     public static void Main()
+                      {
+                        var button = new Button();
+
+                  // Subscribe to the button's click event
+                         button.ButtonClickedEventHandler += Button_Clicked;
+
+                  // Simulate a button click
+                         button.Click("Submit");
+
+                  // Unsubscribe from the event (optional)
+                         button.ButtonClickedEventHandler -= Button_Clicked;
+                       }
+
+                  // Event handler method with "EventHandler" suffix and two parameters named sender and e
+                         private static void Button_Clicked(object sender, ClickedEventArgs e)
+                         {
+                           Console.WriteLine($"Button click event handled. Button text: {e.ButtonText}");
+                         }
+                       }
+    
+
+    In the above code: 
+
+                         #  The event is named "ButtonClickedEventHandler", which follows the guideline of using a verb phrase and the "EventHandler" suffix.
+                         #  The event handler method is named "Button_Clicked", which follows the guideline of using the "EventHandler" suffix and has two 
+                            parameters named 'sender' and 'e'.
+                         #  The event argument class is named "ClickedEventArgs", which follows the guideline of using the "EventArgs" suffix and includes 
+                            any necessary properties or fields for event data.
+                         #  When the button is clicked,the event is raised, and the event handler is invoked to handle the event.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  **1.6.4-  Names of Fields-
+
+            
+                  using System;
+
+                  public class Person
+                  {
+            // DO use PascalCasing for field names
+                    private string firstName;
+                    private string lastName;
+
+           // DO name fields using a noun, noun phrase, or adjective
+                    private int age;
+                    private string address;
+
+          // Constructors
+                   public Person(string firstName, string lastName, int age, string address)
+                   {
+                      this.firstName = firstName;
+                      this.lastName = lastName;
+                      this.age = age;
+                      this.address = address;
+                   }
+
+          // Properties with proper naming conventions
+                   public string FirstName
+                   {
+                     get { return firstName; }
+                     set { firstName = value; }
+                   }
+
+                   public string LastName
+                   {
+                     get { return lastName; }
+                     set { lastName = value; }
+                   } 
+
+                   public int Age
+                   {
+                     get { return age; }
+                     set { age = value; }
+                   }
+
+                   public string Address
+                   {
+                     get { return address; }
+                     set { address = value; }
+                   }
+
+            // Method using field values
+                   public void PrintDetails()
+                   {
+                     Console.WriteLine($"Name: {FirstName} {LastName}");
+                     Console.WriteLine($"Age: {Age}");
+                     Console.WriteLine($"Address: {Address}");
+                   }
+                 }
+
+   In the above code:
+
+                      In this code, we have defined a 'Person' class with fields ('firstName', 'lastName', 'age', and 'address') that follow PascalCasing and 
+                      are named using nouns, noun phrases, or adjectives as per best practices. Additionally, we've provided properties for 
+                      encapsulation and a method ('PrintDetails') that utilizes these fields for demonstration purposes.
+
+________________________________________________________________________________________________________________________________________________________________
+
+
+   **1.7-  Naming Parameters-
+
+          
+                       using System;
+
+                       public class Calculator
+                       {
+                         public int Add(int leftOperand, int rightOperand)
+                         {
+                      // Method to add two integers
+                           return leftOperand + rightOperand;
+                         }
+           
+                          public int Subtract(int minuend, int subtrahend)
+                          {
+                     // Method to subtract two integers
+                            return minuend - subtrahend;
+                          }
+
+                          public int Multiply(int factor1, int factor2)
+                          {
+                     // Method to multiply two integers
+                            return factor1 * factor2;
+                          }
+   
+                           public double Divide(double dividend, double divisor)
+                           {
+                    // Method to divide two doubles
+                            if (divisor == 0)
+                             {
+                               throw new ArgumentException("Divisor cannot be zero.");
+                             }
+                               return dividend / divisor;
+                           }
+
+                     // Binary operator overload example
+                            public static Calculator operator +(Calculator calc1, Calculator calc2)
+                            {
+                              return new Calculator
+                              {
+                     // Using left and right for binary operator parameters
+                     // because they are meaningful in this context.
+                     // You can access the properties or fields of calc1 and calc2
+                     // within this overload.
+                                 leftOperand = calc1.leftOperand + calc2.leftOperand,
+                                 rightOperand = calc1.rightOperand + calc2.rightOperand
+                              };
+                            }
+
+                    // Unary operator overload example
+                          public static Calculator operator -(Calculator calc)
+                          {
+                            return new Calculator
+                            {
+                     // Using 'value' for unary operator parameter name
+                     // because there is no meaning associated with it
+                     // in this context.
+                             leftOperand = -calc.leftOperand,
+                             rightOperand = -calc.rightOperand
+                           };
+                         }
+
+                             private int leftOperand;
+                             private int rightOperand;
+                       }
+
+
+   In the above code:
+
+                       #  Descriptive parameter names like 'leftOperand', 'rightOperand', 'minuend', 'subtrahend', 'factor1', 'factor2', 'dividend', and 'divisor' are used.
+                       #  The binary operator overload method for addition (+) uses left and right because these names are meaningful in this context.
+                       #  The unary operator overload method for negation (-) uses 'value' because there is no specific meaning associated with the parameter in this context.
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+
+   **1.8-  Naming Resources-
+
+               using System;
+
+               public class ResourceManager
+               {
+         // DO use PascalCasing in resource keys
+               public static string ResourceKeyExample = "SampleResource";
+
+        // DO provide descriptive rather than short identifiers
+               public static string DescriptiveResourceKey = "DescriptiveResourceName";
+
+        // DO use only alphanumeric characters and underscores in naming resources
+               public static string Resource_With_Underscore = "ResourceWithUnderscore";
+
+        // DO use the following naming convention for exception message resources
+       // The resource identifier should be the exception type name plus a short identifier of the exception
+               public static string ArgumentExceptionIllegalCharacters = "ArgumentExceptionIllegalCharacters";
+               public static string ArgumentExceptionInvalidName = "ArgumentExceptionInvalidName";
+               public static string ArgumentExceptionFileNameIsMalformed = "ArgumentExceptionFileNameIsMalformed";
+             }
+
+             public class Program
+             {
+               public static void Main()
+               {
+         // Accessing the named resources
+                Console.WriteLine(ResourceManager.ResourceKeyExample);
+                Console.WriteLine(ResourceManager.DescriptiveResourceKey);
+                Console.WriteLine(ResourceManager.Resource_With_Underscore);
+
+        // Accessing exception message resources
+                Console.WriteLine(ResourceManager.ArgumentExceptionIllegalCharacters);
+                Console.WriteLine(ResourceManager.ArgumentExceptionInvalidName);
+                Console.WriteLine(ResourceManager.ArgumentExceptionFileNameIsMalformed);
+              }
+            }
+
+
+  In the above code:
+
+                      #  PascalCasing is used for resource keys. 
+                      #  Descriptive and meaningful resource names are provided.
+                      #  Only alphanumeric characters and underscores are used in resource naming. 
+                      #  The naming convention for exception message resources is followed, where the resource identifier combines the exception type
+                         name with a short identifier for the specific exception.
+
+________________________________________________________________________________________________________________________________________________________________
+
+  ** 2. Type Design Guidelines-
+
+
+  **2.1- Choosing Between Class and Struct-
+
+
+              using System;
+
+          // Define a struct for representing a 2D point
+              public struct Point
+              {
+                public int X;
+                public int Y;
+
+                public Point(int x, int y)
+                {
+                  X = x;
+                  Y = y;
+                }
+              }
+
+           // Define a class for representing a customer
+               public class Customer
+               {
+                 public string Name { get; set; }
+                 public int Age { get; set; }
+
+                 public Customer(string name, int age)
+                 {
+                   Name = name;
+                   Age = age;
+                 }
+                }
+
+               public class Program
+               {
+                 public static void Main()
+                 {
+            // Using a struct for a short-lived object
+                   Point point = new Point(5, 10);
+                   Console.WriteLine($"Point: X = {point.X}, Y = {point.Y}");
+
+           // Using a class for more complex, long-lived objects
+                   Customer customer = new Customer("John Doe", 30);
+                   Console.WriteLine($"Customer: Name = {customer.Name}, Age = {customer.Age}");
+                 }
+               }
+
+
+  In the above code:
+
+                       #  In the code above, we've defined a struct 'Point' to represent a simple 2D point with integer coordinates. This is a good use 
+                          case for a struct because 'Point' instances are small and often short-lived.
+                       #  On the other hand, we've defined a class Customer to represent more complex data - in this case, customer information with a name
+                          and age. This is a good use case for a class because Customer instances may have more complex behavior and are typically 
+                          longer-lived objects.
+
+_______________________________________________________________________________________________________________________________________________________________
+
+   ** 2.2-  Abstract Class Design-
+
+               
+                     using System;
+
+               // DO define a protected or an internal constructor in abstract classes.
+                     abstract class Vehicle
+                     {
+                       protected string Make { get; set; }
+                       protected string Model { get; set; }
+
+               // Protected constructor
+                       protected Vehicle(string make, string model)
+                       {
+                         Make = make;
+                         Model = model;
+                       }
+
+                       public abstract void Start();
+                       public abstract void Stop();
+                     }
+
+             // DO provide at least one concrete type that inherits from each abstract class that you ship
+                    class Car : Vehicle
+                    {
+                      public Car(string make, string model) : base(make, model)
+                      {
+                    }
+
+                       public override void Start()
+                       { 
+                         Console.WriteLine($"{Make} {Model} is starting.");
+                       }
+
+                       public override void Stop()
+                       {
+                         Console.WriteLine($"{Make} {Model} is stopping.");
+                       }
+                    }
+
+              // Another concrete type
+                 class Motorcycle : Vehicle
+                  {
+                    public Motorcycle(string make, string model) : base(make, model)
+                    {
+                    }
+
+                     public override void Start()
+                     {
+                       Console.WriteLine($"{Make} {Model} is starting.");
+                     }
+
+                     public override void Stop()
+                     {
+                       Console.WriteLine($"{Make} {Model} is stopping.");
+                     }
+                   }
+
+                 class Program
+                 {
+                   static void Main(string[] args)
+                   {
+                     Car myCar = new Car("Toyota", "Camry");
+                     myCar.Start();
+                     myCar.Stop();
+
+                     Motorcycle myMotorcycle = new Motorcycle("Honda", "CBR");
+                     myMotorcycle.Start();
+                     myMotorcycle.Stop();
+                   }
+                }
+
+
+   In the above code:
+
+                      #  We define an abstract class 'Vehicle' with a protected constructor.
+                      #  We provide concrete types 'Car' and 'Motorcycle' that inherit from the abstract class 'Vehicle'.
+                      #  We do not define public or protected internal constructors in abstract types, which is in line with the guideline.
+
+________________________________________________________________________________________________________________________________________________________________
+
+
+   ** 2.3- Static Class Design-
+
+                 
+               using System;
+
+           // DO use static classes sparingly
+               public static class MathUtils
+               {
+           // This class provides utility methods for mathematical operations.
+
+           // DO declare static classes as sealed
+           // Note: C# doesn't allow the 'sealed' keyword for static classes,
+           // but you should make sure the class can't be inherited.
+    
+           // DO add a private instance constructor
+           // Note: Since C# doesn't allow 'sealed' or instance constructors for static classes,
+           // you can add a private static constructor to prevent the creation of instances.
+           // This ensures the class remains static.
+               private static MathUtils()
+               {
+                  // Private constructor to prevent instance creation.
+               }
+
+                  // Static methods for mathematical operations
+               public static int Add(int a, int b)
+                {
+                  return a + b;
+                }
+
+               public static int Subtract(int a, int b)
+                {
+                  return a - b;
+                }
+
+               public static int Multiply(int a, int b)
+               {
+                 return a * b;
+               }
+
+               public static int Divide(int a, int b)
+               {
+                 if (b == 0)
+                 {
+                  throw new ArgumentException("Cannot divide by zero.");
+                 }
+                  return a / b;
+               }
+             }
+
+             class Program
+             {
+              static void Main()
+               {
+        // You can use the static methods without creating an instance of MathUtils
+                int result = MathUtils.Add(5, 3);
+                Console.WriteLine("5 + 3 = " + result);
+
+                result = MathUtils.Divide(10, 2);
+                Console.WriteLine("10 / 2 = " + result);
+
+        // Attempting to create an instance will result in a compiler error
+        // MathUtils math = new MathUtils(); // Error: 'MathUtils' is a 'static' class and cannot be instantiated.
+                }
+             }
+
+
+  In the above code:
+                       
+                       #  In this example, MathUtils is a static class that provides utility methods for mathematical operations. It adheres to the 
+                          recommended practices:
+                       *  It's used sparingly, meaning it contains methods that make sense in a static context (mathematical operations).
+                       *  While C# does not allow the 'sealed' keyword for static classes, it includes a private instance constructor ('private 
+                          static MathUtils()') to prevent accidental instantiation.
+                       #  The 'Main' method in the 'Program' class demonstrates how to use the static methods provided by 'MathUtils'. Attempting to
+                          create an instance of 'MathUtils' results in a compiler error, as expected.
+
+_________________________________________________________________________________________________________________________________________________________________
+
+
+  ** 2.4- Interface Design-
+
+ 
+                    using System;
+
+                // Define an interface for a common API
+                    public interface IShape
+                    {
+                      double CalculateArea();
+                    }
+
+               // Provide at least one type that implements the interface
+                    public class Circle : IShape
+                    {
+                      public double Radius { get; }
+
+                      public Circle(double radius)
+                      { 
+                        Radius = radius;
+                      }
+
+                      public double CalculateArea()
+                      {
+                        return Math.PI * Math.Pow(Radius, 2);
+                       }
+                     }
+
+                // Provide at least one API that consumes the interface
+                      public class AreaCalculator
+                      {
+                        public double CalculateTotalArea(IShape[] shapes)
+                        {
+                          double totalArea = 0;
+
+                          foreach (var shape in shapes)
+                          {
+                            totalArea += shape.CalculateArea();
+                          }
+
+                           return totalArea;
+                        }
+                      }
+
+                     class Program
+                      {
+                        static void Main()
+                         {
+                     // Create instances of shapes
+                           IShape[] shapes = new IShape[]
+                           {
+                             new Circle(5.0),
+                             new Circle(3.0),
+                             new Circle(7.5),
+                           };
+
+                     // Calculate the total area using the AreaCalculator API
+                         AreaCalculator calculator = new AreaCalculator();
+                         double totalArea = calculator.CalculateTotalArea(shapes);
+
+                         Console.WriteLine("Total Area: " + totalArea);
+                        }
+                      }
+
+
+  In the above code:
+
+                      #  We define the 'IShape' interface, which defines a common API for calculating the area of different shapes.
+                      #  We provide a concrete type 'Circle' that implements the 'IShape' interface.
+                      #  We provide the 'AreaCalculator' class, which consumes the 'IShape' interface through the CalculateTotalArea method.
+                      #  This code follows the "Do's" you mentioned for interface design. It defines an interface ('IShape') for a common API, 
+                         provides an implementation of that interface ('Circle'), and provides an API ('AreaCalculator') that consumes the interface.
+
+________________________________________________________________________________________________________________________________________________________________
+
+
+   ** 2.5- Struct Design-
+
+                  
+                  using System;
+
+               // Define a struct called 'Person' with instance data
+                  public struct Person : IEquatable<Person>
+                  {
+                    public string FirstName { get; }
+                    public string LastName { get; }
+                    public int Age { get; }
+
+              // Constructor that initializes all instance data
+                    public Person(string firstName, string lastName, int age)
+                    {
+                      FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+                      LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+                      Age = age;
+                    }
+
+             // Implement IEquatable<Person> for value type comparison
+                    public bool Equals(Person other)
+                    {
+                      return FirstName == other.FirstName &&
+                      LastName == other.LastName &&
+                      Age == other.Age;
+                    }
+
+             // Override GetHashCode to ensure value-based comparison
+                   public override int GetHashCode()
+                   {
+                     return HashCode.Combine(FirstName, LastName, Age);
+                   }
+ 
+             // Override ToString for a human-readable representation
+                   public override string ToString()
+                   {
+                    return $"{FirstName} {LastName}, Age: {Age}";
+                   }
+                 }
+
+                class Program
+                {
+                  static void Main()
+                   {
+                 // Create instances of the 'Person' struct
+                    var person1 = new Person("John", "Doe", 30);
+                    var person2 = new Person("Jane", "Smith", 25);
+
+                // Ensure that a state with default values is valid
+                    var defaultPerson = new Person(null, null, 0);
+
+                    Console.WriteLine($"Person 1: {person1}");
+                    Console.WriteLine($"Person 2: {person2}");
+                    Console.WriteLine($"Default Person: {defaultPerson}");
+
+                // Implement IEquatable on value types
+                    Console.WriteLine($"Are person1 and person2 equal? {person1.Equals(person2)}");
+                    Console.WriteLine($"Are person1 and defaultPerson equal? {person1.Equals(defaultPerson)}");
+                   }
+                 }
+
+
+  In the above code:
+
+                      #  We define a 'Person' struct with three properties ('FirstName', 'LastName', and 'Age') and a constructor to initialize them.
+                      #  We implement the 'IEquatable<T>' interface for value type comparison to ensure that two 'Person' structs with the same data are considered equal. 
+                      #  We override the 'GetHashCode' method to generate a hash code that is based on the values of the instance data, allowing us to use instances of
+                         'Person' as keys in hash-based collections.
+                      #  We override the 'ToString' method to provide a human-readable representation of a 'Person' object.
+                      #  In the 'Main' method, we create instances of the 'Person' struct and demonstrate the "Do's" you mentioned:
+                          *  We ensure that a state with default values (null or 0) is valid by creating a 'defaultPerson' instance.
+                          *  We implement 'IEquatable<Person>' for value type comparison and compare instances for equality.
+
+___________________________________________________________________________________________________________________________________________________________________________
+
+
+  ** 2.6- Enum Design-
+
+
+                     using System;
+
+                   // 1. DO use an enum to strongly type parameters, properties, and return values that represent sets of values
+                     public enum Color
+                     {
+                       Red,
+                       Green,
+                       Blue
+                     }
+
+                     public class Car
+                     {
+                       public string Model { get; set; }
+                       public Color Color { get; set; }
+
+                       public Car(string model, Color color)
+                       {
+                         Model = model;
+                         Color = color;
+                       }
+                     }
+
+                    public class Program
+                    {
+                      public static void Main()
+                       {
+                  // 2. DO favor using an enum instead of static constants
+                         Car myCar = new Car("Toyota", Color.Blue);
+
+                         Console.WriteLine($"My car is a {myCar.Color} {myCar.Model}");
+
+                 // 3. DO provide a value of zero on simple enums
+                         Console.WriteLine($"The integer value of Color.Red is {(int)Color.Red}");
+                       }
+                    }
+
+
+  In the above code: 
+
+                      #  We define an enum called 'Color' to represent a set of values that can be used for properties like the color of a car.
+                      #  We use the 'Color' enum as the type for the 'Color' property in the 'Car' class, adhering to the guideline of using enums 
+                         for strongly typed properties.
+                      #  We create an instance of the 'Car' class and initialize it with a 'Color' enum value.
+                      #  We demonstrate the integer value of an enum element, showing that 'Color.Red' has a value of zero, as per the guideline of 
+                         providing a value of zero on simple enums.
+
+_______________________________________________________________________________________________________________________________________________________________
+
+
+  ** 2.7- Nested Types-
+
+
+                 using System;
+
+                 public class OuterClass
+                 {
+                // Private nested class with member-accessibility semantics
+                  private class NestedClass
+                  {
+                    private int nestedField;
+
+                  public NestedClass(int value)
+                  {
+                     nestedField = value;
+                  }
+
+                  public void PrintValue()
+                  {
+                     Console.WriteLine($"NestedClass: {nestedField}");
+                  }
+                 }
+
+                  private int outerField;
+
+                  public OuterClass(int value)
+                  {
+                    outerField = value;
+                  }
+
+                  public void PrintValue()
+                  {
+                    Console.WriteLine($"OuterClass: {outerField}");
+                  }
+
+               // Method using the nested class
+                  public void UseNestedClass(int value)
+                  { 
+                    NestedClass nestedInstance = new NestedClass(value);
+                    nestedInstance.PrintValue();
+                  }
+                }
+
+               class Program
+               {
+                static void Main()
+                {
+                  OuterClass outerInstance = new OuterClass(10);
+                  outerInstance.PrintValue();
+
+             // Accessing nested class through the outer class
+                 outerInstance.UseNestedClass(20);
+                }
+              }
+
+
+  In the above code:
+
+                      #  In this example, we have an 'OuterClass' that contains a private nested class 'NestedClass'.The nested class has member-accessibility 
+                         semantics, as it can access the private members of the outer class. We create an instance of 'NestedClass' within the 'UseNestedClass'
+                         method of 'OuterClass' and demonstrate how to use it.
+                      #  Nested types can help encapsulate logic and improve code organization when there is a clear relationship between the nested type and 
+                         its outer type. In this case, 'NestedClass' is closely related to 'OuterClass', making it a suitable candidate for nesting.
+
+__________________________________________________________________________________________________________________________________________________________________
+
+
+

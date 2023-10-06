@@ -1,0 +1,39 @@
+React JS:
+
+Functional component: is just a simple javascript function;it
+accepts the data in the form of props and returns the react element.
+
+CLass Components: It accepts props and return react element it is
+same like functional components but the main difference is class
+component has private internal state as additional input that
+controls the returned JSX.
+
+HOOKs: There is no breaking changes, Their is completely opt-in & 100% 
+backwards-compatible,   
+
+JSX: JSX stands for JavaScript XML. JSX allows us to write HTML
+in React. JSX makes it easier to write and add HTML in React.
+
+Prop:the word “props” implies “properties”, and its working functionality
+is quite similar to HTML attributes. Basically, these props components
+are read-only components.
+
+State:It is a built-in React object that is used to contain data or
+information about the component.
+
+SetState() method: It enqueues all of the updates made to the
+component state and instructs React to re-render the component.
+
+Destructuring state & props: is an ES6 feature that makes it possible to
+unpack values from arrays or properties from objects into distinct variables.
+In React, destructuring props and states improve code readability.
+
+Event Handler: action is to be taken whenever an event is fired.
+This could be a button click or a change in a text input.
+*event handler is a callback routine that operates asynchronously
+once an event takes place.
+
+Binding event handler: to bind with arrow functions.
+If we don't bind the 'this' keyword with the event
+handler then it will point to undefined in the callback.
+
